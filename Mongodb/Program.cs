@@ -44,26 +44,26 @@ namespace Mongodb
                         update
                     );
                     
-                    //Messages just to know where the script is at and troubleshooting messages
+                    // Messages just to know where the script is at and troubleshooting messages
                     Console.WriteLine($"Matched Count: {updateResult.MatchedCount}, Modified Count: {updateResult.ModifiedCount}");
                     if (updateResult.ModifiedCount > 0)
                     {
-                        Console.WriteLine($"User {user.Username}'s password has been hashed and updated."); //Password has been successfuly hashed and updated
+                        Console.WriteLine($"User {user.Username}'s password has been hashed and updated."); // Password has been successfuly hashed and updated
                     }
                     else
                     {
-                        Console.WriteLine($"No changes made for user {user.Username}."); //Something went wrong and password has not been hashed or updated
+                        Console.WriteLine($"No changes made for user {user.Username}."); // Something went wrong and password has not been hashed or updated
                     }
                 }
                 else
                 {
-                    Console.WriteLine($"Password for user {user.Username} is already hashed, skipping."); //Password is already hashed
+                    Console.WriteLine($"Password for user {user.Username} is already hashed, skipping."); // Password is already hashed
                 }
             }
 
-            Console.WriteLine("Password hashing completed for all users."); //End of the hashing script
+            Console.WriteLine("Password hashing completed for all users."); // End of the hashing script
         }
-        //Using BCrypt to hash the password
+        // Using BCrypt to hash the password
         private static string HashPassword(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password);
