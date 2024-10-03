@@ -1,15 +1,12 @@
-﻿using System;
-using System.Configuration;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using BCrypt.Net;
 
 namespace Mongodb
 {
     public class Program
     {
-        static async Task Main(string[] args)
+        static async Task Main()
         {
             // Read MongoDB connection string from app.config
             string connectionString = ConfigurationManager.AppSettings["mongodbconnectionstring"];
@@ -51,7 +48,7 @@ namespace Mongodb
                     Console.WriteLine($"Matched Count: {updateResult.MatchedCount}, Modified Count: {updateResult.ModifiedCount}");
                     if (updateResult.ModifiedCount > 0)
                     {
-                        Console.WriteLine($"User {user.Username}'s password has been hashed and updated."); //Password has been succesfully hashed and updated
+                        Console.WriteLine($"User {user.Username}'s password has been hashed and updated."); //Password has been successfuly hashed and updated
                     }
                     else
                     {
@@ -67,7 +64,7 @@ namespace Mongodb
             Console.WriteLine("Password hashing completed for all users."); //End of the hashing script
         }
         //Using BCrypt to hash the password
-        public static string HashPassword(string password)
+        private static string HashPassword(string password)
         {
             return BCrypt.Net.BCrypt.HashPassword(password);
         }
